@@ -2,8 +2,6 @@ Archive member included to satisfy reference by file (symbol)
 
 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
                               LiquidCrystal.o (delayMicroseconds)
-C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
-                              main.o (analogWrite)
 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
                               LiquidCrystal.o (pinMode)
 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
@@ -59,13 +57,11 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                              device.o (__do_copy_data)
+                              teclado.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                               critical.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
                               main.o (__do_global_ctors)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                              main.o (__umulhisi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o) (__tablejump2__)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(abort.o)
@@ -78,9 +74,17 @@ Discarded input sections
  .text          0x00000000        0x0 critical.o
  .data          0x00000000        0x0 critical.o
  .bss           0x00000000        0x0 critical.o
- .text          0x00000000        0x0 device.o
- .data          0x00000000        0x0 device.o
- .bss           0x00000000        0x0 device.o
+ .text          0x00000000        0x0 sensor.o
+ .data          0x00000000        0x0 sensor.o
+ .bss           0x00000000        0x0 sensor.o
+ .text          0x00000000        0x0 teclado.o
+ .data          0x00000000        0x0 teclado.o
+ .bss           0x00000000        0x0 teclado.o
+ .text          0x00000000        0x0 adc.o
+ .data          0x00000000        0x0 adc.o
+ .bss           0x00000000        0x0 adc.o
+ .text._Z8adc_initP7adc_cfg
+                0x00000000        0x2 adc.o
  .text          0x00000000        0x0 fnqueue.o
  .data          0x00000000        0x0 fnqueue.o
  .bss           0x00000000        0x0 fnqueue.o
@@ -113,6 +117,10 @@ Discarded input sections
                 0x00000000       0x12 LiquidCrystal.o
  .text._ZN13LiquidCrystal5blinkEv
                 0x00000000       0x14 LiquidCrystal.o
+ .text._ZN13LiquidCrystal17scrollDisplayLeftEv
+                0x00000000        0xa LiquidCrystal.o
+ .text._ZN13LiquidCrystal18scrollDisplayRightEv
+                0x00000000        0xa LiquidCrystal.o
  .text._ZN13LiquidCrystal11leftToRightEv
                 0x00000000       0x14 LiquidCrystal.o
  .text._ZN13LiquidCrystal11rightToLeftEv
@@ -126,21 +134,24 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text._Z17updateCurrentTempv
+                0x00000000        0x2 main.o
+ .text._Z17updateAverageTempv
+                0x00000000        0x2 main.o
+ .text._Z13updateMaxTempv
+                0x00000000        0x2 main.o
+ .text._Z13updateMinTempv
+                0x00000000        0x2 main.o
+ .text._Z13procesarTimerv
+                0x00000000        0x2 main.o
+ .bss._ZL8contador
+                0x00000000        0x2 main.o
  .text          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .data          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .bss           0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .text.millis   0x00000000       0x18 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .text.micros   0x00000000       0x46 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .text.delay    0x00000000       0x50 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .text          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .data          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .bss           0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .text.analogReference
-                0x00000000        0x6 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .text.analogRead
-                0x00000000       0x3a C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .data.analog_reference
-                0x00000000        0x1 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
  .text          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
  .data          0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
  .bss           0x00000000        0x0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
@@ -161,6 +172,8 @@ Discarded input sections
                 0x00000000       0x4a C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print5printERK6String
                 0x00000000       0x1c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .text._ZN5Print5printEc
+                0x00000000        0xe C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print5printERK9Printable
                 0x00000000       0x14 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print7printlnEv
@@ -175,14 +188,14 @@ Discarded input sections
                 0x00000000       0x24 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print7printlnERK9Printable
                 0x00000000       0x24 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .text._ZN5Print5printEli
+                0x00000000       0x94 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .text._ZN5Print5printEii
+                0x00000000       0x10 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print7printlnEii
                 0x00000000       0x30 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print7printlnEli
                 0x00000000       0x24 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
- .text._ZN5Print5printEmi
-                0x00000000       0x1a C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
- .text._ZN5Print5printEhi
-                0x00000000        0xe C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print7printlnEhi
                 0x00000000       0x2e C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
  .text._ZN5Print5printEji
@@ -408,20 +421,6 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
@@ -460,7 +459,9 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
 LOAD critical.o
-LOAD device.o
+LOAD sensor.o
+LOAD teclado.o
+LOAD adc.o
 LOAD fnqueue.o
 LOAD LiquidCrystal.o
 LOAD main.o
@@ -574,7 +575,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x12f4
+.text           0x00000000      0xd30
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -667,6 +668,7 @@ END GROUP
                 0x0000010a                __vector_7
                 0x0000010a                __vector_5
                 0x0000010a                __vector_4
+                0x0000010a                __vector_9
                 0x0000010a                __vector_2
                 0x0000010a                __vector_15
                 0x0000010a                __vector_8
@@ -682,209 +684,176 @@ END GROUP
  .text._Z12critical_endv
                 0x00000156       0x3c critical.o
                 0x00000156                _Z12critical_endv
- .text._Z12procesar_adcv
-                0x00000192       0xe2 device.o
-                0x00000192                _Z12procesar_adcv
+ .text._Z19procesar_adc_sensorv
+                0x00000192       0x18 sensor.o
+                0x00000192                _Z19procesar_adc_sensorv
+ .text._Z15sensor_callbackv
+                0x000001aa       0x1c sensor.o
+                0x000001aa                _Z15sensor_callbackv
+ .text._Z12sensor_setupv
+                0x000001c6       0x12 sensor.o
+                0x000001c6                _Z12sensor_setupv
+ .text._Z20procesar_adc_tecladov
+                0x000001d8       0xf0 teclado.o
+                0x000001d8                _Z20procesar_adc_tecladov
+ .text._Z16teclado_callbackv
+                0x000002c8       0x1c teclado.o
+                0x000002c8                _Z16teclado_callbackv
  .text._Z15key_up_callbackPFvvEi
-                0x00000274       0x1a device.o
-                0x00000274                _Z15key_up_callbackPFvvEi
+                0x000002e4       0x1a teclado.o
+                0x000002e4                _Z15key_up_callbackPFvvEi
  .text._Z17key_down_callbackPFvvEi
-                0x0000028e       0x1a device.o
-                0x0000028e                _Z17key_down_callbackPFvvEi
- .text.__vector_21
-                0x000002a8       0x72 device.o
-                0x000002a8                __vector_21
+                0x000002fe       0x1a teclado.o
+                0x000002fe                _Z17key_down_callbackPFvvEi
  .text._Z13teclado_setupv
-                0x0000031a       0x46 device.o
-                0x0000031a                _Z13teclado_setupv
+                0x00000318       0x12 teclado.o
+                0x00000318                _Z13teclado_setupv
+ .text.__vector_21
+                0x0000032a       0x14 adc.o
+                0x0000032a                __vector_21
  .text._Z12fnqueue_initv
-                0x00000360       0x10 fnqueue.o
-                0x00000360                _Z12fnqueue_initv
+                0x0000033e       0x10 fnqueue.o
+                0x0000033e                _Z12fnqueue_initv
  .text._Z11fnqueue_runv
-                0x00000370       0x58 fnqueue.o
-                0x00000370                _Z11fnqueue_runv
+                0x0000034e       0x58 fnqueue.o
+                0x0000034e                _Z11fnqueue_runv
  .text._Z11fnqueue_addPFvvE
-                0x000003c8       0x54 fnqueue.o
-                0x000003c8                _Z11fnqueue_addPFvvE
+                0x000003a6       0x54 fnqueue.o
+                0x000003a6                _Z11fnqueue_addPFvvE
  .text._ZN5Print17availableForWriteEv
-                0x0000041c        0x6 LiquidCrystal.o
-                0x0000041c                _ZN5Print17availableForWriteEv
+                0x000003fa        0x6 LiquidCrystal.o
+                0x000003fa                _ZN5Print17availableForWriteEv
  .text._ZN5Print5flushEv
-                0x00000422        0x2 LiquidCrystal.o
-                0x00000422                _ZN5Print5flushEv
+                0x00000400        0x2 LiquidCrystal.o
+                0x00000400                _ZN5Print5flushEv
  .text._ZN13LiquidCrystal11pulseEnableEv
-                0x00000424       0x3c LiquidCrystal.o
-                0x00000424                _ZN13LiquidCrystal11pulseEnableEv
+                0x00000402       0x3c LiquidCrystal.o
+                0x00000402                _ZN13LiquidCrystal11pulseEnableEv
  .text._ZN13LiquidCrystal10write4bitsEh
-                0x00000460       0x5a LiquidCrystal.o
-                0x00000460                _ZN13LiquidCrystal10write4bitsEh
+                0x0000043e       0x5a LiquidCrystal.o
+                0x0000043e                _ZN13LiquidCrystal10write4bitsEh
  .text._ZN13LiquidCrystal10write8bitsEh
-                0x000004ba       0x5a LiquidCrystal.o
-                0x000004ba                _ZN13LiquidCrystal10write8bitsEh
+                0x00000498       0x5a LiquidCrystal.o
+                0x00000498                _ZN13LiquidCrystal10write8bitsEh
  .text._ZN13LiquidCrystal4sendEhh
-                0x00000514       0x58 LiquidCrystal.o
-                0x00000514                _ZN13LiquidCrystal4sendEhh
+                0x000004f2       0x58 LiquidCrystal.o
+                0x000004f2                _ZN13LiquidCrystal4sendEhh
  .text._ZN13LiquidCrystal5clearEv
-                0x0000056c       0x12 LiquidCrystal.o
-                0x0000056c                _ZN13LiquidCrystal5clearEv
+                0x0000054a       0x12 LiquidCrystal.o
+                0x0000054a                _ZN13LiquidCrystal5clearEv
  .text._ZN13LiquidCrystal9setCursorEhh
-                0x0000057e       0x2a LiquidCrystal.o
-                0x0000057e                _ZN13LiquidCrystal9setCursorEhh
+                0x0000055c       0x2a LiquidCrystal.o
+                0x0000055c                _ZN13LiquidCrystal9setCursorEhh
  .text._ZN13LiquidCrystal7displayEv
-                0x000005a8       0x14 LiquidCrystal.o
-                0x000005a8                _ZN13LiquidCrystal7displayEv
+                0x00000586       0x14 LiquidCrystal.o
+                0x00000586                _ZN13LiquidCrystal7displayEv
  .text._ZN13LiquidCrystal5beginEhhh
-                0x000005bc      0x176 LiquidCrystal.o
-                0x000005bc                _ZN13LiquidCrystal5beginEhhh
+                0x0000059a      0x176 LiquidCrystal.o
+                0x0000059a                _ZN13LiquidCrystal5beginEhhh
  .text._ZN13LiquidCrystalC2Ehhhhhh
-                0x00000732       0x42 LiquidCrystal.o
-                0x00000732                _ZN13LiquidCrystalC1Ehhhhhh
-                0x00000732                _ZN13LiquidCrystalC2Ehhhhhh
- .text._ZN13LiquidCrystal17scrollDisplayLeftEv
-                0x00000774        0xa LiquidCrystal.o
-                0x00000774                _ZN13LiquidCrystal17scrollDisplayLeftEv
- .text._ZN13LiquidCrystal18scrollDisplayRightEv
-                0x0000077e        0xa LiquidCrystal.o
-                0x0000077e                _ZN13LiquidCrystal18scrollDisplayRightEv
+                0x00000710       0x42 LiquidCrystal.o
+                0x00000710                _ZN13LiquidCrystalC1Ehhhhhh
+                0x00000710                _ZN13LiquidCrystalC2Ehhhhhh
  .text._ZN13LiquidCrystal5writeEh
-                0x00000788        0xc LiquidCrystal.o
-                0x00000788                _ZN13LiquidCrystal5writeEh
- .text._Z10down_keyUpv
-                0x00000794        0x2 main.o
-                0x00000794                _Z10down_keyUpv
- .text._Z12down_keyDownv
-                0x00000796        0x2 main.o
-                0x00000796                _Z12down_keyDownv
- .text._Z10up_keyLeftv
-                0x00000798        0x2 main.o
-                0x00000798                _Z10up_keyLeftv
- .text._Z12down_keyLeftv
-                0x0000079a        0x2 main.o
-                0x0000079a                _Z12down_keyLeftv
- .text._Z11up_keyRightv
-                0x0000079c        0x2 main.o
-                0x0000079c                _Z11up_keyRightv
- .text._Z13down_keyRightv
-                0x0000079e        0x2 main.o
-                0x0000079e                _Z13down_keyRightv
- .text._Z15iniciarTimerMADv
-                0x000007a0        0xe main.o
-                0x000007a0                _Z15iniciarTimerMADv
- .text._Z14down_keySelectv
-                0x000007ae        0xe main.o
-                0x000007ae                _Z14down_keySelectv
- .text._Z16iniciarTimerMAD2v
-                0x000007bc        0xe main.o
-                0x000007bc                _Z16iniciarTimerMAD2v
- .text._Z16iniciarTimerMAD5v
-                0x000007ca        0xe main.o
-                0x000007ca                _Z16iniciarTimerMAD5v
+                0x00000752        0xc LiquidCrystal.o
+                0x00000752                _ZN13LiquidCrystal5writeEh
  .text._Z12up_keySelectv
-                0x000007d8       0x64 main.o
-                0x000007d8                _Z12up_keySelectv
- .text._Z9saveSplitv
-                0x0000083c       0x30 main.o
-                0x0000083c                _Z9saveSplitv
- .text._Z12brightnessUpv
-                0x0000086c       0x1e main.o
-                0x0000086c                _Z12brightnessUpv
- .text._Z14brightnessDownv
-                0x0000088a       0x1e main.o
-                0x0000088a                _Z14brightnessDownv
- .text._Z12showNextTimev
-                0x000008a8       0x26 main.o
-                0x000008a8                _Z12showNextTimev
- .text._Z12showPrevTimev
-                0x000008ce       0x26 main.o
-                0x000008ce                _Z12showPrevTimev
- .text._Z10resetTimerv
-                0x000008f4       0x1a main.o
-                0x000008f4                _Z10resetTimerv
- .text._Z10up_keyDownv
-                0x0000090e       0x4e main.o
-                0x0000090e                _Z10up_keyDownv
- .text._Z10pauseTimerv
-                0x0000095c       0x1a main.o
-                0x0000095c                _Z10pauseTimerv
- .text._Z13continueTimerv
-                0x00000976       0x12 main.o
-                0x00000976                _Z13continueTimerv
+                0x0000075e        0x2 main.o
+                0x0000075e                _Z12up_keySelectv
+ .text._Z10down_keyUpv
+                0x00000760        0x2 main.o
+                0x00000760                _Z10down_keyUpv
+ .text._Z12down_keyDownv
+                0x00000762        0x2 main.o
+                0x00000762                _Z12down_keyDownv
+ .text._Z12down_keyLeftv
+                0x00000764        0x2 main.o
+                0x00000764                _Z12down_keyLeftv
+ .text._Z13down_keyRightv
+                0x00000766        0x2 main.o
+                0x00000766                _Z13down_keyRightv
+ .text._Z14down_keySelectv
+                0x00000768        0x2 main.o
+                0x00000768                _Z14down_keySelectv
+ .text._Z15showCurrentTempv
+                0x0000076a       0x34 main.o
+                0x0000076a                _Z15showCurrentTempv
+ .text._Z10up_keyLeftv
+                0x0000079e        0x6 main.o
+                0x0000079e                _Z10up_keyLeftv
+ .text._Z15showAverageTempv
+                0x000007a4       0x34 main.o
+                0x000007a4                _Z15showAverageTempv
+ .text._Z11up_keyRightv
+                0x000007d8        0x6 main.o
+                0x000007d8                _Z11up_keyRightv
+ .text._Z11showMaxTempv
+                0x000007de       0x34 main.o
+                0x000007de                _Z11showMaxTempv
  .text._Z8up_keyUpv
-                0x00000988       0x74 main.o
-                0x00000988                _Z8up_keyUpv
- .text._Z12imprimirModoa
-                0x000009fc       0x60 main.o
-                0x000009fc                _Z12imprimirModoa
- .text._Z13procesarTimerv
-                0x00000a5c      0x122 main.o
-                0x00000a5c                _Z13procesarTimerv
- .text.setup    0x00000b7e      0x112 main.o
-                0x00000b7e                setup
- .text.loop     0x00000c90        0x6 main.o
-                0x00000c90                loop
- .text.__vector_9
-                0x00000c96       0xae main.o
-                0x00000c96                __vector_9
- .text._GLOBAL__sub_I_sentido
-                0x00000d44       0x2e main.o
+                0x00000812        0x6 main.o
+                0x00000812                _Z8up_keyUpv
+ .text._Z11showMinTempv
+                0x00000818       0x34 main.o
+                0x00000818                _Z11showMinTempv
+ .text._Z10up_keyDownv
+                0x0000084c        0x6 main.o
+                0x0000084c                _Z10up_keyDownv
+ .text.setup    0x00000852       0x8e main.o
+                0x00000852                setup
+ .text.loop     0x000008e0        0x6 main.o
+                0x000008e0                loop
+ .text._GLOBAL__sub_I_lcd
+                0x000008e6       0x2e main.o
  .text.__vector_16
-                0x00000d72       0x94 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
-                0x00000d72                __vector_16
+                0x00000914       0x94 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x00000914                __vector_16
  .text.delayMicroseconds
-                0x00000e06       0x14 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
-                0x00000e06                delayMicroseconds
- .text.init     0x00000e1a       0x76 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
-                0x00000e1a                init
- .text.analogWrite
-                0x00000e90       0xbe C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
-                0x00000e90                analogWrite
+                0x000009a8       0x14 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x000009a8                delayMicroseconds
+ .text.init     0x000009bc       0x76 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x000009bc                init
  .text.turnOffPWM
-                0x00000f4e       0x52 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .text.pinMode  0x00000fa0       0x72 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
-                0x00000fa0                pinMode
+                0x00000a32       0x52 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .text.pinMode  0x00000a84       0x72 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+                0x00000a84                pinMode
  .text.digitalWrite
-                0x00001012       0x6c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
-                0x00001012                digitalWrite
+                0x00000af6       0x6c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+                0x00000af6                digitalWrite
  .text.initVariant
-                0x0000107e        0x2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
-                0x0000107e                initVariant
+                0x00000b62        0x2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+                0x00000b62                initVariant
  .text.startup.main
-                0x00001080       0x1e C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
-                0x00001080                main
+                0x00000b64       0x1e C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+                0x00000b64                main
  .text._ZN5Print5writeEPKhj
-                0x0000109e       0x50 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x0000109e                _ZN5Print5writeEPKhj
+                0x00000b82       0x50 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000b82                _ZN5Print5writeEPKhj
  .text._ZN5Print5writeEPKc
-                0x000010ee       0x2c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x000010ee                _ZN5Print5writeEPKc
+                0x00000bd2       0x2c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000bd2                _ZN5Print5writeEPKc
  .text._ZN5Print5printEPKc
-                0x0000111a        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x0000111a                _ZN5Print5printEPKc
- .text._ZN5Print5printEc
-                0x0000111e        0xe C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x0000111e                _ZN5Print5printEc
+                0x00000bfe        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000bfe                _ZN5Print5printEPKc
  .text._ZN5Print11printNumberEmh
-                0x0000112c       0xb2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x0000112c                _ZN5Print11printNumberEmh
- .text._ZN5Print5printEli
-                0x000011de       0x94 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x000011de                _ZN5Print5printEli
- .text._ZN5Print5printEii
-                0x00001272       0x10 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
-                0x00001272                _ZN5Print5printEii
+                0x00000c02       0xb2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000c02                _ZN5Print11printNumberEmh
+ .text._ZN5Print5printEmi
+                0x00000cb4       0x1a C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000cb4                _ZN5Print5printEmi
+ .text._ZN5Print5printEhi
+                0x00000cce        0xe C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+                0x00000cce                _ZN5Print5printEhi
  .text.libgcc.div
-                0x00001282       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                0x00001282                __udivmodsi4
- .text.libgcc.mul
-                0x000012c6       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x000012c6                __umulhisi3
- .text.libgcc   0x000012e4        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x000012e4                __tablejump2__
-                0x000012f0                . = ALIGN (0x2)
+                0x00000cdc       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                0x00000cdc                __udivmodsi4
+ .text.libgcc   0x00000d20        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x00000d20                __tablejump2__
+                0x00000d2c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000012f0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000012f0                _exit
-                0x000012f0                exit
+ .fini9         0x00000d2c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000d2c                _exit
+                0x00000d2c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -903,100 +872,78 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000012f0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000d2c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000012f4                _etext = .
+                0x00000d30                _etext = .
 
-.data           0x00800100       0x84 load address 0x000012f4
+.data           0x00800100       0x40 load address 0x00000d30
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  .data._ZL6oldkey
-                0x00800100        0x2 device.o
- .data.sentido  0x00800102        0x1 main.o
-                0x00800102                sentido
- .data._ZL12brilloActual
-                0x00800103        0x1 main.o
+                0x00800100        0x2 teclado.o
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata._ZTV13LiquidCrystal
-                0x00800104        0xc LiquidCrystal.o
-                0x00800104                _ZTV13LiquidCrystal
+                0x00800102        0xc LiquidCrystal.o
+                0x00800102                _ZTV13LiquidCrystal
  .rodata.str1.1
-                0x00800110       0x74 main.o
+                0x0080010e       0x32 main.o
  *(.gnu.linkonce.r*)
-                0x00800184                . = ALIGN (0x2)
-                0x00800184                _edata = .
-                0x00800184                PROVIDE (__data_end, .)
+                0x00800140                . = ALIGN (0x2)
+                0x00800140                _edata = .
+                0x00800140                PROVIDE (__data_end, .)
 
-.bss            0x00800184       0x83
-                0x00800184                PROVIDE (__bss_start, .)
+.bss            0x00800140       0x6c
+                0x00800140                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss._ZL11anidamiento
-                0x00800184        0x2 critical.o
- .bss.teclasCallback
-                0x00800186       0x14 device.o
-                0x00800186                teclasCallback
+                0x00800140        0x2 critical.o
+ .bss._ZL6config
+                0x00800142        0x6 sensor.o
  .bss._ZL9analogVal
-                0x0080019a        0x2 device.o
+                0x00800148        0x2 sensor.o
  .bss._ZL8contador
-                0x0080019c        0x1 device.o
+                0x0080014a        0x1 sensor.o
+ .bss.teclasCallback
+                0x0080014b       0x14 teclado.o
+                0x0080014b                teclasCallback
+ .bss._ZL6config
+                0x0080015f        0x6 teclado.o
+ .bss._ZL9analogVal
+                0x00800165        0x2 teclado.o
+ .bss._ZL8contador
+                0x00800167        0x1 teclado.o
  .bss._ZL13fnqueue_count
-                0x0080019d        0x1 fnqueue.o
+                0x00800168        0x1 fnqueue.o
  .bss._ZL12fnqueue_tail
-                0x0080019e        0x1 fnqueue.o
+                0x00800169        0x1 fnqueue.o
  .bss._ZL12fnqueue_head
-                0x0080019f        0x1 fnqueue.o
+                0x0080016a        0x1 fnqueue.o
  .bss._ZL17fnqueue_functions
-                0x008001a0       0x20 fnqueue.o
- .bss.lcd       0x008001c0       0x18 main.o
-                0x008001c0                lcd
- .bss.contScroll
-                0x008001d8        0x2 main.o
-                0x008001d8                contScroll
- .bss._ZL12contador5seg
-                0x008001da        0x1 main.o
- .bss._ZL16contadorMAD3seg2
-                0x008001db        0x1 main.o
- .bss._ZL16contadorMAD3seg1
-                0x008001dc        0x1 main.o
- .bss._ZL13contadorPosta
-                0x008001dd        0x2 main.o
- .bss._ZL11contadorAux
-                0x008001df        0x2 main.o
- .bss._ZL15contadorPausado
-                0x008001e1        0x2 main.o
- .bss._ZL12posEnTiempos
-                0x008001e3        0x1 main.o
- .bss._ZL12tiempoActual
-                0x008001e4        0x1 main.o
- .bss._ZL7tiempos
-                0x008001e5       0x14 main.o
- .bss._ZL8contador
-                0x008001f9        0x2 main.o
- .bss._ZL8timerOvf
-                0x008001fb        0x2 main.o
- .bss._ZL4modo  0x008001fd        0x1 main.o
+                0x0080016b       0x20 fnqueue.o
+ .bss.lcd       0x0080018b       0x18 main.o
+                0x0080018b                lcd
  .bss.timer0_fract
-                0x008001fe        0x1 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x008001a3        0x1 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .bss.timer0_millis
-                0x008001ff        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
-                0x008001ff                timer0_millis
+                0x008001a4        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x008001a4                timer0_millis
  .bss.timer0_overflow_count
-                0x00800203        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
-                0x00800203                timer0_overflow_count
+                0x008001a8        0x4 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x008001a8                timer0_overflow_count
  *(COMMON)
-                0x00800207                PROVIDE (__bss_end, .)
-                0x000012f4                __data_load_start = LOADADDR (.data)
-                0x00001378                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008001ac                PROVIDE (__bss_end, .)
+                0x00000d30                __data_load_start = LOADADDR (.data)
+                0x00000d70                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800207        0x0
+.noinit         0x008001ac        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800207                _end = .
+                0x008001ac                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -1040,13 +987,14 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 critical.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 device.o
+ .comment       0x00000030       0x31 sensor.o
+ .comment       0x00000030       0x31 teclado.o
+ .comment       0x00000030       0x31 adc.o
  .comment       0x00000030       0x31 fnqueue.o
  .comment       0x00000030       0x31 LiquidCrystal.o
  .comment       0x00000030       0x31 main.o
  .comment       0x00000030       0x11 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
                                  0x12 (size before relaxing)
- .comment       0x00000041       0x12 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
  .comment       0x00000041       0x12 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
  .comment       0x00000041       0x12 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
  .comment       0x00000041       0x12 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
@@ -1076,17 +1024,19 @@ END GROUP
  .debug_aranges
                 0x00000000       0x28 critical.o
  .debug_aranges
-                0x00000028       0x40 device.o
+                0x00000028       0x30 sensor.o
  .debug_aranges
-                0x00000068       0x30 fnqueue.o
+                0x00000058       0x40 teclado.o
  .debug_aranges
-                0x00000098      0x108 LiquidCrystal.o
+                0x00000098       0x28 adc.o
  .debug_aranges
-                0x000001a0       0xf0 main.o
+                0x000000c0       0x30 fnqueue.o
  .debug_aranges
-                0x00000290       0x48 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+                0x000000f0      0x108 LiquidCrystal.o
  .debug_aranges
-                0x000002d8       0x30 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
+                0x000001f8       0xc8 main.o
+ .debug_aranges
+                0x000002c0       0x48 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
  .debug_aranges
                 0x00000308       0x38 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
  .debug_aranges
@@ -1097,96 +1047,102 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x6a2c
+.debug_info     0x00000000     0x68aa
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4       0xd9 critical.o
- .debug_info    0x000006cd      0x255 device.o
- .debug_info    0x00000922      0x1b8 fnqueue.o
- .debug_info    0x00000ada     0x1e89 LiquidCrystal.o
- .debug_info    0x00002963      0xd14 main.o
- .debug_info    0x00003677      0x2c2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_info    0x00003939      0x281 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_info    0x00003bba      0x5f1 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_info    0x000041ab      0x1f0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_info    0x0000439b     0x2691 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_info    0x000006cd      0x18e sensor.o
+ .debug_info    0x0000085b      0x2bd teclado.o
+ .debug_info    0x00000b18      0x1fd adc.o
+ .debug_info    0x00000d15      0x1b8 fnqueue.o
+ .debug_info    0x00000ecd     0x1e89 LiquidCrystal.o
+ .debug_info    0x00002d56      0xa20 main.o
+ .debug_info    0x00003776      0x2c2 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_info    0x00003a38      0x5f1 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_info    0x00004029      0x1f0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_info    0x00004219     0x2691 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
-.debug_abbrev   0x00000000     0x1799
+.debug_abbrev   0x00000000     0x174c
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2       0x6a critical.o
- .debug_abbrev  0x0000060c      0x183 device.o
- .debug_abbrev  0x0000078f       0xfb fnqueue.o
- .debug_abbrev  0x0000088a      0x35e LiquidCrystal.o
- .debug_abbrev  0x00000be8      0x28c main.o
- .debug_abbrev  0x00000e74      0x143 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_abbrev  0x00000fb7      0x184 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_abbrev  0x0000113b      0x162 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_abbrev  0x0000129d       0xd7 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_abbrev  0x00001374      0x425 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_abbrev  0x0000060c       0xe8 sensor.o
+ .debug_abbrev  0x000006f4      0x16b teclado.o
+ .debug_abbrev  0x0000085f       0xe6 adc.o
+ .debug_abbrev  0x00000945       0xfb fnqueue.o
+ .debug_abbrev  0x00000a40      0x35e LiquidCrystal.o
+ .debug_abbrev  0x00000d9e      0x20d main.o
+ .debug_abbrev  0x00000fab      0x143 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_abbrev  0x000010ee      0x162 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_abbrev  0x00001250       0xd7 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_abbrev  0x00001327      0x425 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
-.debug_line     0x00000000     0x2171
+.debug_line     0x00000000     0x1ff8
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000133      0x11f critical.o
- .debug_line    0x00000252      0x212 device.o
- .debug_line    0x00000464      0x1a6 fnqueue.o
- .debug_line    0x0000060a      0x93c LiquidCrystal.o
- .debug_line    0x00000f46      0x76d main.o
- .debug_line    0x000016b3      0x1d3 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_line    0x00001886      0x19c C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_line    0x00001a22      0x199 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_line    0x00001bbb      0x16b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_line    0x00001d26      0x44b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_line    0x00000252      0x15f sensor.o
+ .debug_line    0x000003b1      0x1ed teclado.o
+ .debug_line    0x0000059e      0x1bb adc.o
+ .debug_line    0x00000759      0x1a6 fnqueue.o
+ .debug_line    0x000008ff      0x93c LiquidCrystal.o
+ .debug_line    0x0000123b      0x49b main.o
+ .debug_line    0x000016d6      0x1d3 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_line    0x000018a9      0x199 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_line    0x00001a42      0x16b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_line    0x00001bad      0x44b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
-.debug_frame    0x00000000      0xc4c
+.debug_frame    0x00000000      0xb94
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 critical.o
- .debug_frame   0x00000034       0xb8 device.o
- .debug_frame   0x000000ec       0x50 fnqueue.o
- .debug_frame   0x0000013c      0x358 LiquidCrystal.o
- .debug_frame   0x00000494      0x224 main.o
- .debug_frame   0x000006b8       0xbc C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_frame   0x00000774       0x54 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_frame   0x000007c8       0x88 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_frame   0x00000850       0x44 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_frame   0x00000894      0x3b8 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_frame   0x00000034       0x44 sensor.o
+ .debug_frame   0x00000078       0x70 teclado.o
+ .debug_frame   0x000000e8       0x40 adc.o
+ .debug_frame   0x00000128       0x50 fnqueue.o
+ .debug_frame   0x00000178      0x358 LiquidCrystal.o
+ .debug_frame   0x000004d0      0x184 main.o
+ .debug_frame   0x00000654       0xbc C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_frame   0x00000710       0x88 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_frame   0x00000798       0x44 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_frame   0x000007dc      0x3b8 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
-.debug_str      0x00000000     0x20c5
+.debug_str      0x00000000     0x2071
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x1d7 critical.o
                                 0x20b (size before relaxing)
- .debug_str     0x000003df      0x157 device.o
-                                0x2fa (size before relaxing)
- .debug_str     0x00000536       0x91 fnqueue.o
+ .debug_str     0x000003df       0xe9 sensor.o
+                                0x295 (size before relaxing)
+ .debug_str     0x000004c8      0x146 teclado.o
+                                0x359 (size before relaxing)
+ .debug_str     0x0000060e       0x97 adc.o
+                                0x263 (size before relaxing)
+ .debug_str     0x000006a5       0x8c fnqueue.o
                                 0x2a8 (size before relaxing)
- .debug_str     0x000005c7      0x702 LiquidCrystal.o
+ .debug_str     0x00000731      0x6a7 LiquidCrystal.o
                                 0x8cc (size before relaxing)
- .debug_str     0x00000cc9      0x42a main.o
-                                0x852 (size before relaxing)
- .debug_str     0x000010f3       0xf8 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_str     0x00000dd8      0x34b main.o
+                                0x6a0 (size before relaxing)
+ .debug_str     0x00001123       0xf8 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
                                 0x19d (size before relaxing)
- .debug_str     0x000011eb       0xaf C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
-                                0x1aa (size before relaxing)
- .debug_str     0x0000129a       0xe0 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_str     0x0000121b      0x10b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
                                 0x20b (size before relaxing)
- .debug_str     0x0000137a      0x13e C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_str     0x00001326      0x13e C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
                                 0x1f1 (size before relaxing)
- .debug_str     0x000014b8      0xc0d C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_str     0x00001464      0xc0d C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
                                 0xe22 (size before relaxing)
 
-.debug_loc      0x00000000     0x49fc
+.debug_loc      0x00000000     0x4766
  *(.debug_loc)
- .debug_loc     0x00000000      0x1c6 device.o
- .debug_loc     0x000001c6       0xc3 fnqueue.o
- .debug_loc     0x00000289     0x1d65 LiquidCrystal.o
- .debug_loc     0x00001fee      0x192 main.o
- .debug_loc     0x00002180      0x22b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_loc     0x000023ab      0x127 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_loc     0x000024d2      0x617 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_loc     0x00002ae9       0x26 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_loc     0x00002b0f     0x1eed C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_loc     0x00000000       0xfb teclado.o
+ .debug_loc     0x000000fb       0x55 adc.o
+ .debug_loc     0x00000150       0xc3 fnqueue.o
+ .debug_loc     0x00000213     0x1d65 LiquidCrystal.o
+ .debug_loc     0x00001f78       0x99 main.o
+ .debug_loc     0x00002011      0x22b C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_loc     0x0000223c      0x617 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_loc     0x00002853       0x26 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_loc     0x00002879     0x1eed C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1206,18 +1162,19 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x438
+.debug_ranges   0x00000000      0x428
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 critical.o
- .debug_ranges  0x00000018       0x30 device.o
- .debug_ranges  0x00000048       0x20 fnqueue.o
- .debug_ranges  0x00000068       0xf8 LiquidCrystal.o
- .debug_ranges  0x00000160       0xe0 main.o
- .debug_ranges  0x00000240       0x38 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
- .debug_ranges  0x00000278       0x20 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_analog.c.o)
- .debug_ranges  0x00000298       0x40 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
- .debug_ranges  0x000002d8       0x20 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
- .debug_ranges  0x000002f8      0x140 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
+ .debug_ranges  0x00000018       0x20 sensor.o
+ .debug_ranges  0x00000038       0x30 teclado.o
+ .debug_ranges  0x00000068       0x18 adc.o
+ .debug_ranges  0x00000080       0x20 fnqueue.o
+ .debug_ranges  0x000000a0       0xf8 LiquidCrystal.o
+ .debug_ranges  0x00000198       0xb8 main.o
+ .debug_ranges  0x00000250       0x38 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring.c.o)
+ .debug_ranges  0x00000288       0x40 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(wiring_digital.c.o)
+ .debug_ranges  0x000002c8       0x20 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(main.cpp.o)
+ .debug_ranges  0x000002e8      0x140 C:\Users\Lucio\Desktop\libcore\libcoreArduinoUno.a(Print.cpp.o)
 
 .debug_macro
  *(.debug_macro)

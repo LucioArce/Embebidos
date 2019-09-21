@@ -5,6 +5,7 @@
 #include <avr/interrupt.h>
 
 // include the library code:
+#include "adc.h"
 #include "Arduino.h"
 
 int adc_init(adc_cfg *cfg)

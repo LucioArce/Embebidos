@@ -1,7 +1,8 @@
 #include <stdint.h> 
-#include "teclado.h"
 #include <avr/interrupt.h>
+#include "teclado.h"
 #include "fnqueue.h"
+#include "adc.h"
 
 static uint8_t NUM_KEYS = 5;
 static uint8_t contador = 0;
@@ -26,7 +27,7 @@ void key_down_callback(void (*handler)(),int tecla){
 void procesar_adc_teclado()
 {
 	int16_t k;
-	analogVal=config.value;
+	analogVal=config.valor;
 	for (k = 0; k < NUM_KEYS; k++)
 		if (analogVal < adc_key_val[k])
 		{

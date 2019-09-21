@@ -9,6 +9,8 @@
 #include "LiquidCrystal.h"
 #include "teclado.h"
 #include "fnqueue.h"
+#include "sensor.h"
+
 
 const uint8_t numRows = 2;
 const uint8_t numCols = 16;
@@ -159,7 +161,7 @@ void setup()
 	
 	// Inicializa los tiempos
 	for(int i = 0; i<MAX_TEMPS; i++)
-	tiempos[i] = 0;
+	temps[i] = 0;
 	
 }
 

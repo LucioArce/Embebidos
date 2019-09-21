@@ -1,32 +1,25 @@
-#include "sensor.h"
 #include <stdint.h>
 #include <avr/interrupt.h>
+#include "sensor.h"
 #include "fnqueue.h"
+#include "adc.h"
 
 static uint8_t contador;
 static uint16_t medicion=0;
 static volatile uint16_t analogVal;
 
 
-static volatile uint16_t analogVal;
-
 
 static adc_cfg config;
 
-
-void sensor_callback()
-{
-	
-}
-
 void procesar_adc_sensor()
 {
-	analogVal=config.value;
+	analogVal=config.valor;
 	medicion=analogVal * 1.1 * 100 / 1024;			// formula de conversion de temp del lm35
 	//como la mando al main???
 }
 
-void teclado_callback()
+void sensor_callback()
 {
 	contador++;
 	if(contador > 50)
@@ -36,11 +29,11 @@ void teclado_callback()
 	}
 }
 
-void teclado_setup()
+void sensor_setup()
 {
 	config.canal=0;
 	config.valor=0;
-	config.callback=teclado_callback;
+	config.callback=sensor_callback;
 	
 	//...
 }
