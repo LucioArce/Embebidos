@@ -13,151 +13,107 @@
 const uint8_t numRows = 2;
 const uint8_t numCols = 16;
 
-static int8_t volatile modo;
-static volatile uint16_t timerOvf = 0;
 static uint16_t volatile contador = 0; //contador
 
-#define COEFBRILLO 51  // 51 es el 20% de 255
-static uint8_t brilloActual = 4; // el brillo inicial es del 80% 0<=brilloActal<=5
 
-#define MAX_TIEMPOS 10
-static uint16_t tiempos[MAX_TIEMPOS];
-static uint8_t tiempoActual = 0; //tiempo del arreglo de tiempos para escribir
-static int8_t posEnTiempos = 0; //indice actual del arreglo de tiempos para mostrar
+#define MAX_TEMPS 100
+static uint16_t temps[MAX_TEMPS];
 
-static uint16_t contadorPausado = 0; //contador para mostrar en MP
-static uint16_t contadorAux = 0;
-static int16_t contadorPosta = 0;
-static int8_t contadorMAD3seg1 = 0;
-static int8_t contadorMAD3seg2 = 0;
-static int8_t contador5seg = 0;
+static uint8_t tempActual = 0; 
+static uint8_t tempMin = 200;
+static uint8_t tempMax = 0;
+static uint8_t tempPromedio = 0;
 
-bool sentido=true;
-
-int contScroll=0;
+static uint8_t cantTemps = 0;
+static uint8_t indiceArreglo = 0;
 
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
-
-
-//MODOS:
-#define START 0
-#define MCA   1
-#define MP    2
-#define MVT   3
-#define MAD   4
 
 
 /************************************************************************/
 /*                          AUXILIARES                                  */
 /************************************************************************/
-void iniciarTimerMAD()
+updateCurrentTemp()
 {
-	contadorMAD3seg1=contador;
+	
+}
+updateAverageTemp()
+{
+	
+}
+updateMaxTemp()
+{
+	
+}
+updateMinTemp()
+{
+	
+}
+void showCurrentTemp()
+{
+	lcd.setCursor(0,0);
+	lcd.print("Temp Actual");
+	lcd.setCursor(0,1);
+	lcd.print(tempActual);
 }
 
-void iniciarTimerMAD2()
+void showAverageTemp()
 {
-	contadorMAD3seg2=contador;
+	lcd.setCursor(0,0);
+	lcd.print("Temp Promedio");
+	lcd.setCursor(0,1);
+	lcd.print(tempPromedio);
 }
 
-void iniciarTimerMAD5()
+void showMaxTemp()
 {
-	contador5seg=contador;
+	lcd.setCursor(0,0);
+	lcd.print("Temp Maxima");
+	lcd.setCursor(0,1);
+	lcd.print(tempMax);
 }
 
-void saveSplit()
+void showMinTemp()
 {
-	if(tiempoActual == 9)
-	tiempoActual=-1;
-
-	tiempoActual++;
-	tiempos[tiempoActual]=contadorPosta;
-}
-
-void brightnessUp()
-{
-	if(brilloActual<5)
-	{
-		brilloActual++;
-		analogWrite(10,brilloActual*COEFBRILLO);
-	}
-}
-void brightnessDown()
-{
-	if(brilloActual>1)
-	{
-		brilloActual--;
-		analogWrite(10,brilloActual*COEFBRILLO);
-	}
-}
-
-int showNextTime()
-{
-	if(posEnTiempos>8)
-	posEnTiempos=-1;
-
-	posEnTiempos++;
-	return tiempos[posEnTiempos];
-}
-
-int showPrevTime()
-{
-	if(posEnTiempos<1)
-	posEnTiempos=10;
-
-	posEnTiempos--;
-	return tiempos[posEnTiempos];
-}
-
-void resetTimer()
-{
-	contadorPosta=0;
-	contadorPausado=0;
-	contador=0;
-}
-
-void pauseTimer()
-{
-	contadorPausado=contador;
-	contadorPosta=contadorPausado;
-}
-
-void continueTimer()
-{
-	contador=contadorPausado;
-}
-
-void imprimirModo(int8_t m)
-{
-	lcd.setCursor(13,0);
-	switch (m)
-	{
-		case MCA:
-		{
-			lcd.print("MCA");
-		}
-		break;
-		case MP:
-		{
-			lcd.print("MP ");
-		}
-		break;
-		case MVT:
-		{
-			lcd.print("MVT");
-		}
-		break;
-		case MAD:
-		{
-			lcd.print("MAD");
-		}
-		break;
-	}
+	lcd.setCursor(0,0);
+	lcd.print("Temp Minima");
+	lcd.setCursor(0,1);
+	lcd.print(tempMin);
 }
 
 /************************************************************************/
 /*                           CALLBACKS                                  */
 /************************************************************************/
+
+void up_keyLeft()
+{
+	updateCurrentTemp();
+	showCurrentTemp();
+}
+
+void up_keyRight()
+{
+	updateAverageTemp();
+	showAverageTemp();
+}
+
+void up_keyUp()
+{
+	updateMaxTemp();
+	showMaxTemp();
+}
+
+void up_keyDown()
+{
+	updateMinTemp();
+	showMinTemp();
+}
+
+void up_keySelect()
+{
+	
+}
+
 void down_keyUp()
 {
 	
@@ -168,17 +124,7 @@ void down_keyDown()
 	
 }
 
-void up_keyLeft()
-{
-	
-}
-
 void down_keyLeft()
-{
-	
-}
-
-void up_keyRight()
 {
 	
 }
@@ -190,112 +136,18 @@ void down_keyRight()
 
 void down_keySelect()
 {
-	if (modo==MP)
-	iniciarTimerMAD();
+
 }
 
-void up_keyUp()
-{
-	switch (modo)
-	{
-		case START:
-		{
-			modo = MP;
-		}break;
-		case MCA:
-		{
-			pauseTimer();
-			modo = MP;
-		}break;
-		case MP:
-		{
-			continueTimer();
-			modo = MCA;
-		}break;
-		case MVT:
-		{
-			contadorPosta = showNextTime();
-		}break;
-		case MAD:
-		{
-			iniciarTimerMAD5();
-			if(contadorAux != contadorPausado)
-			contadorAux = contadorPausado;
-			brightnessUp();
-		}break;
-	}
-}
 
-void up_keyDown()
-{
-	switch (modo)
-	{
-		case START:
-		{
-			modo = MP;
-		}break;
-		case MCA:
-		{
-			saveSplit();
-		}break;
-		case MP:
-		{
-			saveSplit();
-			resetTimer();
-		}break;
-		case MVT:
-		{
-			contadorPosta = showPrevTime();
-		}break;
-		case MAD:
-		{
-			iniciarTimerMAD5();
-			brightnessDown();
-		}break;
-	}
-}
-
-void up_keySelect()
-{
-	switch (modo)
-	{
-		case START:
-		{
-			modo = MP;
-		}break;
-		case MP:
-		{
-			iniciarTimerMAD2();
-			// Si la cantidad de segundos que pasaron es menor a 3
-			//  -> me voy a MVT
-			//  sino me voy a MAD
-			if((contadorMAD3seg2-contadorMAD3seg1) < 3)
-			{
-				modo = MVT;
-			}
-			else
-			{
-				modo = MAD;
-				iniciarTimerMAD5();
-			}
-		}break;
-		case MVT:
-		{
-			modo = MP;
-		}break;
-		case MAD:
-		{
-			modo = MP;
-		}break;
-	}
-}
 
 
 
 void setup()
 {
-	teclado_setup();
 	fnqueue_init();
+	teclado_setup();
+	sensor_setup();
 	
 	// Define los callbacks de cada Tecla
 	key_up_callback( up_keyUp, TECLA0);
@@ -392,16 +244,3 @@ void procesarTimer()
 	}
 }
 
-ISR(TIMER2_OVF_vect) // TIMER2_OVF_vect
-{
-	TCNT2 = 0;
-	timerOvf= (timerOvf + 1) % 60;
-	// El modo START para contemplar el estado incial con la info de la materia, etc.
-	if(timerOvf == 0 ) //como el prescaler esta seteado en 1024, cada 60 interrupciones cuento 1 seg(0.98 seg)
-	{
-		contador++;
-		//timerOvf=0;
-		fnqueue_add(procesarTimer);
-	}
-	
-}
