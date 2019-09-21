@@ -16,6 +16,7 @@ const uint8_t numRows = 2;
 const uint8_t numCols = 16;
 
 static uint16_t volatile contador = 0; //contador
+static uint16_t temperaturaMedida = 0;
 
 
 #define MAX_TEMPS 100
@@ -35,21 +36,50 @@ LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 /************************************************************************/
 /*                          AUXILIARES                                  */
 /************************************************************************/
+void guardarTemp(int8_t temp)
+{
+	temps[indiceArreglo]=temp;
+	indiceArreglo=(indiceArreglo+1)%100;
+	if (cantTemps<=100)
+		cantTemps++;
+}
+
 void updateCurrentTemp()
 {
-	
+	tempActual=temperaturaMedida;
 }
 void updateAverageTemp()
 {
-	
+	int16_t sumaTemps=0;
+	tempPromedio=0;
+	if(cantTemps>0)
+	{
+		for(int i = 0; i<indiceArreglo; i++)
+		{
+			sumaTemps+=temps[i];
+		}
+		tempPromedio=sumaTemps/cantTemps;
+	}
 }
 void updateMaxTemp()
 {
-	
+	for(int i = 0; i<indiceArreglo; i++)
+	{
+		if (temps[i]>tempMax)
+		{
+			tempMax=temps[i];
+		}
+	}
 }
 void updateMinTemp()
 {
-	
+	for(int i = 0; i<indiceArreglo; i++)
+	{
+		if (temps[i]<tempMin)
+		{
+			tempMin=temps[i];
+		}
+	}
 }
 void showCurrentTemp()
 {
@@ -111,6 +141,12 @@ void up_keyDown()
 	showMinTemp();
 }
 
+void tomar_medicion(int valor)
+{
+	temperaturaMedida=valor;
+	guardarTemp(valor);
+}
+
 void up_keySelect()
 {
 	
@@ -144,8 +180,10 @@ void down_keySelect()
 void setup()
 {
 	fnqueue_init();
-	teclado_setup();
-	sensor_setup();
+	
+	
+	lcd.setCursor(0,0);
+	lcd.print("Ta            ");
 	
 	// Define los callbacks de cada Tecla
 	key_up_callback( up_keyUp, TECLA0);
@@ -159,10 +197,22 @@ void setup()
 	key_up_callback( up_keySelect, TECLA4);
 	key_down_callback( down_keySelect, TECLA4);
 	
-	// Inicializa los tiempos
-	for(int i = 0; i<MAX_TEMPS; i++)
-	temps[i] = 0;
+	//callback del sensor
+	medicion_callback(tomar_medicion);
 	
+	
+	teclado_setup();
+	sensor_setup();
+	
+	
+	// Inicializa las temps
+	for(int i = 0; i<MAX_TEMPS; i++)
+		temps[i] = 0;
+	
+	
+	lcd.setCursor(0,0);
+	lcd.print("Te           ");
+
 }
 
 void loop()
@@ -170,8 +220,4 @@ void loop()
 	fnqueue_run();
 }
 
-void procesarTimer()
-{
-	
-}
 

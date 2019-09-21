@@ -8,18 +8,22 @@ static uint8_t contador;
 static uint16_t medicion=0;
 static volatile uint16_t analogVal;
 
-
-
 static adc_cfg config;
+static callbackSensor sensorCallback;
+
+void medicion_callback(void (*handler)(int))
+{
+	sensorCallback.callback=handler;
+}
 
 void procesar_adc_sensor()
 {
 	analogVal=config.valor;
 	medicion=analogVal * 1.1 * 100 / 1024;			// formula de conversion de temp del lm35
-	//como la mando al main???
+	sensorCallback.callback(medicion);
 }
 
-void sensor_callback()
+void sensor_callback(int valor)
 {
 	contador++;
 	if(contador > 50)
@@ -31,9 +35,9 @@ void sensor_callback()
 
 void sensor_setup()
 {
-	config.canal=0;
+	config.canal=1;
 	config.valor=0;
 	config.callback=sensor_callback;
-	
+	adc_init(&config);
 	//...
 }

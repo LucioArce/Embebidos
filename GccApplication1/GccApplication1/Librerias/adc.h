@@ -1,9 +1,8 @@
 struct adc_cfg
 {
 	uint8_t canal;
-	void (*callback)();
+	void (*callback)(int);
 	uint8_t valor;
-	uint8_t prioridad;
 	uint8_t idle;
 	
 };

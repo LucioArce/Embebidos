@@ -24,10 +24,9 @@ void key_down_callback(void (*handler)(),int tecla){
 		teclasCallback[tecla].callbackDown=handler;
 }
 	
-void procesar_adc_teclado()
+void procesar_adc_teclado(int analogVal)
 {
 	int16_t k;
-	analogVal=config.valor;
 	for (k = 0; k < NUM_KEYS; k++)
 		if (analogVal < adc_key_val[k])
 		{
@@ -46,21 +45,14 @@ void procesar_adc_teclado()
 		};
 }
 
-void teclado_callback()
-{
-	contador++;
-	if(contador > 50)
-	{
-		fnqueue_add(procesar_adc_teclado);
-		contador=0;
-	}
-}
+
 
 void teclado_setup()
 {
 	config.canal=0;
 	config.valor=0;
-	config.callback=teclado_callback;
+	config.callback=procesar_adc_teclado;
+	adc_init(&config);
 	
 	//...
 }
