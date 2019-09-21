@@ -4,7 +4,11 @@
 
 critical.cpp
 
-device.cpp
+sensor.cpp
+
+teclado.cpp
+
+adc.cpp
 
 fnqueue.cpp
 

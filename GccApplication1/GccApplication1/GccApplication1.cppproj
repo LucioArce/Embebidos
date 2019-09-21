@@ -167,10 +167,13 @@
     <Compile Include="critical.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="device.cpp">
+    <Compile Include="sensor.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="driverADC.cpp">
+    <Compile Include="teclado.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="adc.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="fnqueue.cpp">

@@ -1,4 +1,4 @@
 struct callbackSensor
 {
 	void (*callback)();
-}
+};

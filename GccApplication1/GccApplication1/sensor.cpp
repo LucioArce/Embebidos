@@ -3,8 +3,9 @@
 #include <avr/interrupt.h>
 #include "fnqueue.h"
 
+static uint8_t contador;
 static uint16_t medicion=0;
-static volatile analogVal;
+static volatile uint16_t analogVal;
 
 
 static volatile uint16_t analogVal;
@@ -15,7 +16,7 @@ static adc_cfg config;
 
 void sensor_callback()
 {
-		
+	
 }
 
 void procesar_adc_sensor()
