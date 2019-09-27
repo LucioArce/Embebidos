@@ -11,7 +11,7 @@ teclado.d teclado.o: .././teclado.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- .././teclado.h \
+ C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/teclado.h \
  C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/fnqueue.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/adc.h
@@ -40,7 +40,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-.././teclado.h:
+C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/teclado.h:
 
 C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/fnqueue.h:
 

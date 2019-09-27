@@ -15,6 +15,8 @@
 const uint8_t numRows = 2;
 const uint8_t numCols = 16;
 
+static uint8_t timerOvf=0;
+
 static uint16_t volatile contador = 0; //contador
 static uint16_t temperaturaMedida = 0;
 
@@ -54,7 +56,7 @@ void updateAverageTemp()
 	tempPromedio=0;
 	if(cantTemps>0)
 	{
-		for(int i = 0; i<indiceArreglo; i++)
+		for(int i = 0; i<cantTemps; i++)
 		{
 			sumaTemps+=temps[i];
 		}
@@ -84,32 +86,41 @@ void updateMinTemp()
 void showCurrentTemp()
 {
 	lcd.setCursor(0,0);
-	lcd.print("Temp Actual");
+	lcd.print("Temp Actual       ");
 	lcd.setCursor(0,1);
+	lcd.print("                ");
+	lcd.setCursor(1,1);
 	lcd.print(tempActual);
 }
 
 void showAverageTemp()
 {
 	lcd.setCursor(0,0);
-	lcd.print("Temp Promedio");
+	lcd.print("Temp Promedio           ");
 	lcd.setCursor(0,1);
+	lcd.print("                ");
+	
+	lcd.setCursor(1,1);
 	lcd.print(tempPromedio);
 }
 
 void showMaxTemp()
 {
 	lcd.setCursor(0,0);
-	lcd.print("Temp Maxima");
+	lcd.print("Temp Maxima     ");
 	lcd.setCursor(0,1);
+	lcd.print("                ");
+	lcd.setCursor(1,1);
 	lcd.print(tempMax);
 }
 
 void showMinTemp()
 {
 	lcd.setCursor(0,0);
-	lcd.print("Temp Minima");
+	lcd.print("Temp Minima       ");
 	lcd.setCursor(0,1);
+	lcd.print("                ");
+	lcd.setCursor(1,1);
 	lcd.print(tempMin);
 }
 
@@ -144,7 +155,7 @@ void up_keyDown()
 void tomar_medicion(int valor)
 {
 	temperaturaMedida=valor;
-	guardarTemp(valor);
+	
 }
 
 void up_keySelect()
@@ -180,10 +191,21 @@ void down_keySelect()
 void setup()
 {
 	fnqueue_init();
-	
-	
+	lcd.begin(numCols,numRows);
+	teclado_setup();
+	sensor_setup(tomar_medicion);
 	lcd.setCursor(0,0);
-	lcd.print("Ta            ");
+	lcd.print("            ");
+	
+	//setup del timer2
+	cli();
+	TCCR2A = 0;// set entire TCCR2A register to 0
+	TCCR2B = 0;// same for TCCR2B
+	TCCR2A |= (1 << WGM21);  // ctc for timer 0
+	TIMSK2 |= (1<<TOIE2); //setea la interrupcion por overflow
+	TCNT2 = 0; //set timer en 0
+	TCCR2B |= (1 << CS22) | (1 << CS21) | (1 << CS20);  // CS#2 y CS#0 bits -> Timer0 preescaler = 1024
+	sei();
 	
 	// Define los callbacks de cada Tecla
 	key_up_callback( up_keyUp, TECLA0);
@@ -198,11 +220,10 @@ void setup()
 	key_down_callback( down_keySelect, TECLA4);
 	
 	//callback del sensor
-	medicion_callback(tomar_medicion);
+	//medicion_callback(tomar_medicion);
 	
 	
-	teclado_setup();
-	sensor_setup();
+	
 	
 	
 	// Inicializa las temps
@@ -211,8 +232,15 @@ void setup()
 	
 	
 	lcd.setCursor(0,0);
-	lcd.print("Te           ");
+	lcd.print("S.E. 2019         ");
+	lcd.setCursor(0,1);
+	lcd.print("Actividad 1");
 
+}
+
+void auxiliar()
+{
+	guardarTemp(temperaturaMedida);
 }
 
 void loop()
@@ -220,4 +248,15 @@ void loop()
 	fnqueue_run();
 }
 
-
+ISR(TIMER2_OVF_vect) // TIMER2_OVF_vect
+{
+	TCNT2 = 0;
+	timerOvf= (timerOvf + 1) % 9;
+	if(timerOvf == 0 ) //como el prescaler esta seteado en 1024, cada 9 interrupciones cuento 1 seg(0.144 seg)
+	{
+		contador++;
+		//timerOvf=0;
+		fnqueue_add(auxiliar);
+	}
+	
+}

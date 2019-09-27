@@ -5,7 +5,6 @@
 #include "adc.h"
 
 static uint8_t NUM_KEYS = 5;
-static uint8_t contador = 0;
 static volatile uint16_t analogVal;
 static uint16_t adc_key_val[5] ={50, 230, 360, 535, 760 };
 static int16_t oldkey=-1;
@@ -24,7 +23,7 @@ void key_down_callback(void (*handler)(),int tecla){
 		teclasCallback[tecla].callbackDown=handler;
 }
 	
-void procesar_adc_teclado(int analogVal)
+void procesar_adc_teclado(uint16_t analogVal)
 {
 	int16_t k;
 	for (k = 0; k < NUM_KEYS; k++)
@@ -49,8 +48,8 @@ void procesar_adc_teclado(int analogVal)
 
 void teclado_setup()
 {
-	config.canal=0;
-	config.valor=0;
+	config.channel=0;
+	config.value=0;
 	config.callback=procesar_adc_teclado;
 	adc_init(&config);
 	

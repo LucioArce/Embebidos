@@ -36,7 +36,7 @@ main.d main.o: .././main.cpp \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h \
  C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/LiquidCrystal.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
- .././teclado.h \
+ C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/teclado.h \
  C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/fnqueue.h \
  C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/sensor.h
 
@@ -114,7 +114,7 @@ C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librer
 
 C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h:
 
-.././teclado.h:
+C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/teclado.h:
 
 C:\Users\Lucio\Documents\GitHub\Embebidos\GccApplication1\GccApplication1\Librerias/fnqueue.h:
 
